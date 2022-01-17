@@ -1,0 +1,199 @@
+.card {
+  height: 55rem;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+
+  &__side {
+    width: 100%;
+    height: 55rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $color-white;
+    font-size: 2rem;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem $rgba-shadow;
+
+    transition: all 0.6s ease-out;
+    backface-visibility: hidden;
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  //FRONT CARD STYLING
+
+  &__picture {
+    height: 23rem;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    background-blend-mode: screen;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    width: 75%;
+    position: absolute;
+    top: 12rem;
+    right: 1rem;
+    color: $color-white;
+    font-size: $font-size-xl;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: right;
+
+    /*
+    %heading-box-deco-break {
+      padding: 1rem 3rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  */
+
+    &-span {
+      padding: 1rem 3rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      &--1 {
+        // @extend %heading-box-deco-break;
+        background-image: linear-gradient(
+          to bottom,
+          rgba($color-secondary-light, 0.8),
+          rgba($color-secondary-dark, 0.8)
+        );
+      }
+
+      &--2 {
+        // @extend %heading-box-deco-break;
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)
+        );
+      }
+
+      &--3 {
+        // @extend %heading-box-deco-break;
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-tertiary-light, 0.8),
+          rgba($color-tertiary-dark, 0.8)
+        );
+      }
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        color: $color-grey-medium;
+        text-align: center;
+        font-size: $font-size-sm;
+        font-weight: 500;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  //BACKSIDE CARD STYLING
+  &__cta {
+    @include absoluteCenter;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+  }
+  &__price-only {
+    font-size: $font-size-l;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  &__price-value {
+    font-size: 10rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+  }
+}
